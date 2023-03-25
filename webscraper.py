@@ -8,6 +8,6 @@ url = 'http://pages.hashtagtreinamentos.com/inscricao-minicurso-python-automacao
 global browser
 browser = webdriver.Chrome()
 browser.get(url)
-
+browser.find_element('xpath', '//*[@id="section-10356508"]/section/div[2]/div/div[2]/form/div[1]/div/div[1]/div/input').send_keys('fuck')
 
 input("Press enter to close the browser...")
