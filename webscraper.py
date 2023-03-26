@@ -1,6 +1,7 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.keys import Keys
 
 service = Service(ChromeDriverManager().install())
 
@@ -9,6 +10,7 @@ urls = [
     'https://hakkasan.com/mayfair/menu/',
     'https://rivercafe.com/dinner-menu/'
     ]
+
 browser = webdriver.Chrome()
 
 for url in urls:
