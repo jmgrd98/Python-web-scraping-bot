@@ -64,7 +64,6 @@ for url in urls:
            itemCounter2 += 1
            print(item2.text)
 
-
         # itemCounter = 0
 
 input("Press enter to close the browser...")
