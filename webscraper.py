@@ -12,6 +12,8 @@ urls = [
     ]
 
 itemCounter = 0
+ctrlC = Keys.CONTROL + 'C'
+ctrlV = Keys.CONTROL + 'V'
 
 browser = webdriver.Chrome()
 
