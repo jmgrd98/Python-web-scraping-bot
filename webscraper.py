@@ -13,8 +13,8 @@ urls = [
     ]
 
 itemCounter = 0
-itemCounter1 = 1
-itemCounter2 = 0
+itemCounter1 = 0
+itemCounter2 = 1
 
 ctrlC = Keys.CONTROL + 'C'
 ctrlV = Keys.CONTROL + 'V'
@@ -25,8 +25,10 @@ for url in urls:
     browser.get(url)
 
     if url == urls[0]:
-        restaurantTitle = browser.find_element(By.XPATH, '//*[@id="primary"]/div/div[1]/div/div[1]/div[1]/h3')
-        print(restaurantTitle.text)
+        restaurantTitle = 'CORE by Clare Smith'
+        menuTitle = browser.find_element(By.XPATH, '//*[@id="primary"]/div/div[1]/div/div[1]/div[1]/h3')
+        print(restaurantTitle)
+        print(menuTitle.text)
 
         while itemCounter < 7:
             item_xpath = '//*[@id="primary"]/div/div[1]/div/div[1]/div[1]/p[{}]'
@@ -37,6 +39,8 @@ for url in urls:
             print(item.text)
 
     if url == urls[1]:
+        restaurantTitle = 'Hakkasan Mayfair'
+        print(restaurantTitle)
         try:
             restaurantTitle1 = browser.find_element(By.CLASS_NAME, 'location')
             print(restaurantTitle1.text)
@@ -44,10 +48,17 @@ for url in urls:
             print('Could not find element with class name "location"')
             
     if url == urls[2]:
+        restaurantTitle = 'River Café'
+        menuTitle = browser.find_element(By.XPATH, '//*[@id="page-78"]/section/div[1]/div/div/div/div[2]/div/h1/strong')
+        print(restaurantTitle)
+        print(menuTitle.text)
 
-        while itemCounter2 <= 10:
+        while itemCounter1 <= 10:
            item_xpath2 = '//*[@id="page-78"]/section/div[2]/div/div/div/div[8]/div/div[{}]/div/div/p[1]'
-           item_xpath2 = item_xpath2.format(itemCounter2 + 1)
+           
+           if itemCounter1 == 2:
+            item2_xpath2 = '//*[@id="page-78"]/section/div[2]/div/div/div/div[8]/div/div[2]/div/div[{}]/p[3]'
+            item_xpath2 = item_xpath2.format(itemCounter2 + 1)
 
            item2 = browser.find_element(By.XPATH, item_xpath2) 
            itemCounter2 += 1
