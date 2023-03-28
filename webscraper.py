@@ -4,6 +4,10 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
+with open('restaurant_scraping.csv', 'w') as file:
+    file.write('Restaurant Title; Menu Title; Items')
+
+
 service = Service(ChromeDriverManager().install())
 
 urls = [
@@ -13,8 +17,6 @@ urls = [
     ]
 
 itemCounter = 0
-itemCounter1 = 0
-itemCounter2 = 1
 
 ctrlC = Keys.CONTROL + 'C'
 ctrlV = Keys.CONTROL + 'V'
@@ -40,6 +42,7 @@ for url in urls:
         
         itemCounter = 0
 
+
     if url == urls[1]:
         restaurantTitle = 'Hakkasan Mayfair'
         print(restaurantTitle)
@@ -55,7 +58,7 @@ for url in urls:
         print(restaurantTitle)
         print(menuTitle.text)
 
-        while itemCounter1 <= 2:
+        while itemCounter <= 2:
            item_xpath2 = '//*[@id="page-78"]/section/div[2]/div/div/div/div[8]/div/div[{}]/div/div/p[1]'
            item_xpath2 = item_xpath2.format(itemCounter + 1)
 
