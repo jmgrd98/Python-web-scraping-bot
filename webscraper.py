@@ -37,6 +37,8 @@ for url in urls:
             item = browser.find_element(By.XPATH, item_xpath)
             itemCounter += 1
             print(item.text)
+        
+        itemCounter = 0
 
     if url == urls[1]:
         restaurantTitle = 'Hakkasan Mayfair'
@@ -57,14 +59,9 @@ for url in urls:
            item_xpath2 = '//*[@id="page-78"]/section/div[2]/div/div/div/div[8]/div/div[{}]/div/div/p[1]'
            item_xpath2 = item_xpath2.format(itemCounter + 1)
 
-        #    if itemCounter1 == 2:
-        #     item2_xpath2 = '//*[@id="page-78"]/section/div[2]/div/div/div/div[8]/div/div[2]/div/div[{}]/p[3]'
-        #     item_xpath2 = item_xpath2.format(itemCounter2 + 1)
-
            item2 = browser.find_element(By.XPATH, item_xpath2) 
            itemCounter += 1
            print(item2.text)
 
-        # itemCounter = 0
 
 input("Press enter to close the browser...")
