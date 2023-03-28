@@ -53,15 +53,16 @@ for url in urls:
         print(restaurantTitle)
         print(menuTitle.text)
 
-        while itemCounter1 <= 10:
+        while itemCounter1 <= 2:
            item_xpath2 = '//*[@id="page-78"]/section/div[2]/div/div/div/div[8]/div/div[{}]/div/div/p[1]'
-           
-           if itemCounter1 == 2:
-            item2_xpath2 = '//*[@id="page-78"]/section/div[2]/div/div/div/div[8]/div/div[2]/div/div[{}]/p[3]'
-            item_xpath2 = item_xpath2.format(itemCounter2 + 1)
+           item_xpath2 = item_xpath2.format(itemCounter + 1)
+
+        #    if itemCounter1 == 2:
+        #     item2_xpath2 = '//*[@id="page-78"]/section/div[2]/div/div/div/div[8]/div/div[2]/div/div[{}]/p[3]'
+        #     item_xpath2 = item_xpath2.format(itemCounter2 + 1)
 
            item2 = browser.find_element(By.XPATH, item_xpath2) 
-           itemCounter2 += 1
+           itemCounter += 1
            print(item2.text)
 
         # itemCounter = 0
