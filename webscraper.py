@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
 with open('restaurant_scraping.csv', 'w') as file:
-    file.write('Restaurant Title; Menu Title; Items')
+    file.write("Restaurant Title; \n Menu Title; \n Items")
 
 
 service = Service(ChromeDriverManager().install())
@@ -31,6 +31,9 @@ for url in urls:
         menuTitle = browser.find_element(By.XPATH, '//*[@id="primary"]/div/div[1]/div/div[1]/div[1]/h3')
         print(restaurantTitle)
         print(menuTitle.text)
+        with open('restaurant_scraping.csv', 'a') as file:
+                file.write(restaurantTitle  + '\n')
+                file.write(menuTitle.text  + '\n')
 
         while itemCounter < 7:
             item_xpath = '//*[@id="primary"]/div/div[1]/div/div[1]/div[1]/p[{}]'
@@ -39,6 +42,8 @@ for url in urls:
             item = browser.find_element(By.XPATH, item_xpath)
             itemCounter += 1
             print(item.text)
+            with open('restaurant_scraping.csv', 'a') as file:
+                file.write(item.text + '\n')
         
         itemCounter = 0
 
