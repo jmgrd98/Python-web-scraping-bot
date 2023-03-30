@@ -2,6 +2,7 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 import pandas
 import time
+import requests
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
@@ -32,13 +33,13 @@ for url in urls:
     browser.get(url)
 
     if url == urls[0]:
-        restaurantTitle = 'CORE by Clare Smith'
+        restaurant_title = 'CORE by Clare Smith'
         menuTitle = browser.find_element(By.XPATH, '//*[@id="primary"]/div/div[1]/div/div[1]/div[1]/h3')
         print(restaurantTitle)
-        print(menuTitle.text)
+        print(menu_title.text)
         with open('restaurant_scraping.csv', 'a') as file:
                 file.write(restaurantTitle  + '\n')
-                file.write(menuTitle.text  + '\n')
+                file.write(menu_title.text  + '\n')
 
         while itemCounter < 7:
             item_xpath = '//*[@id="primary"]/div/div[1]/div/div[1]/div[1]/p[{}]'
@@ -55,9 +56,14 @@ for url in urls:
 
 
     if url == urls[1]:
-        restaurantTitle = 'Hakkasan Mayfair'
-
-        print(restaurantTitle)
+        restaurant_title = 'Hakkasan Mayfair'
+        button_xpath = '//*[@id="menu-nav"]/ul/li[9]/a'
+        menu_button = browser.find_element(By.XPATH, button_xpath)
+        menu_button.click()
+        menu_title_xpath = '//*[@id="menu-3808555"]/div[1]'
+        menu_title = browser.find_element(By.XPATH, 'name')
+        print(restaurant_title)
+        print(menu_title.text)
 
         with open('restaurant_scraping.csv', 'a') as file:
                 file.write(restaurantTitle  + '\n')
