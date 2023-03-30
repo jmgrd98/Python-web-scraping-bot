@@ -20,25 +20,27 @@ urls = [
     'https://rivercafe.com/dinner-menu/'
     ]
 
-itemCounter = 0
-items1 = []
-items2 = []
+item_counter = 0
+items_1 = []
+items_2 = []
 
-ctrlC = Keys.CONTROL + 'C'
-ctrlV = Keys.CONTROL + 'V'
+ctrl_c = Keys.CONTROL + 'C'
+ctrl_v = Keys.CONTROL + 'V'
 
 browser = webdriver.Chrome()
 
 for url in urls:
     browser.get(url)
+    time.sleep(1)
 
     if url == urls[0]:
         restaurant_title = 'CORE by Clare Smith'
-        menuTitle = browser.find_element(By.XPATH, '//*[@id="primary"]/div/div[1]/div/div[1]/div[1]/h3')
-        print(restaurantTitle)
+        menu_title = browser.find_element(By.XPATH, '//*[@id="primary"]/div/div[1]/div/div[1]/div[1]/h3')
+        print(restaurant_title)
         print(menu_title.text)
+
         with open('restaurant_scraping.csv', 'a') as file:
-                file.write(restaurantTitle  + '\n')
+                file.write(restaurant_title  + '\n')
                 file.write(menu_title.text  + '\n')
 
         while itemCounter < 7:
@@ -49,6 +51,7 @@ for url in urls:
             items1.append(item.text)
             itemCounter += 1
             print(item.text)
+
             with open('restaurant_scraping.csv', 'a') as file:
                 file.write(item.text + '\n')
         
@@ -56,12 +59,14 @@ for url in urls:
 
 
     if url == urls[1]:
+        html_text = requests.get('https://hakkasan.com/mayfair/menu/')
+        print(html_text)
         restaurant_title = 'Hakkasan Mayfair'
-        button_xpath = '//*[@id="menu-nav"]/ul/li[9]/a'
-        menu_button = browser.find_element(By.XPATH, button_xpath)
-        menu_button.click()
+        menu_button_xpath = '//*[@id="menu-nav"]/ul/li[9]/a'
+        # menu_button = browser.find_element(By.CLASS_NAME, 'current')
+        # menu_button.click()
         menu_title_xpath = '//*[@id="menu-3808555"]/div[1]'
-        menu_title = browser.find_element(By.XPATH, 'name')
+        menu_title = browser.find_element(By.XPATH, menu_title_xpath)
         print(restaurant_title)
         print(menu_title.text)
 
