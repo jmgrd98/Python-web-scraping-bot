@@ -1,6 +1,6 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
-import pandas
+import pandas as pd
 import time
 import requests
 from webdriver_manager.chrome import ChromeDriverManager
