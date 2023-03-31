@@ -43,56 +43,56 @@ for url in urls:
                 file.write(restaurant_title  + '\n')
                 file.write(menu_title.text  + '\n')
 
-        while itemCounter < 7:
+        while item_counter < 7:
             item_xpath = '//*[@id="primary"]/div/div[1]/div/div[1]/div[1]/p[{}]'
-            item_xpath = item_xpath.format(itemCounter + 1)
+            item_xpath = item_xpath.format(item_counter + 1)
             
             item = browser.find_element(By.XPATH, item_xpath)
-            items1.append(item.text)
-            itemCounter += 1
+            items_1.append(item.text)
+            item_counter += 1
             print(item.text)
 
             with open('restaurant_scraping.csv', 'a') as file:
                 file.write(item.text + '\n')
         
-        itemCounter = 0
+        item_counter = 0
 
 
     if url == urls[1]:
-        html_text = requests.get('https://hakkasan.com/mayfair/menu/')
-        print(html_text)
+        # html_text = requests.get('https://hakkasan.com/mayfair/menu/')
+        # print(html_text)
         restaurant_title = 'Hakkasan Mayfair'
         menu_button_xpath = '//*[@id="menu-nav"]/ul/li[9]/a'
         # menu_button = browser.find_element(By.CLASS_NAME, 'current')
         # menu_button.click()
-        menu_title_xpath = '//*[@id="menu-3808555"]/div[1]'
-        menu_title = browser.find_element(By.XPATH, menu_title_xpath)
+        # menu_title_xpath = '//*[@id="menu-3808555"]/div[1]'
+        # menu_title = browser.find_element(By.XPATH, menu_title_xpath)
         print(restaurant_title)
-        print(menu_title.text)
+        # print(menu_title.text)
 
         with open('restaurant_scraping.csv', 'a') as file:
-                file.write(restaurantTitle  + '\n')
+                file.write(restaurant_title  + '\n')
                 
             
     if url == urls[2]:
-        restaurantTitle = 'River Café'
-        menuTitle = browser.find_element(By.XPATH, '//*[@id="page-78"]/section/div[1]/div/div/div/div[2]/div/h1/strong')
-        print(restaurantTitle)
-        print(menuTitle.text)
+        restaurant_title = 'River Café'
+        menu_title = browser.find_element(By.XPATH, '//*[@id="page-78"]/section/div[1]/div/div/div/div[2]/div/h1/strong')
+        print(restaurant_title)
+        print(menu_title.text)
         with open('restaurant_scraping.csv', 'a') as file:
-                file.write(restaurantTitle  + '\n')
-                file.write(menuTitle.text  + '\n')
+                file.write(restaurant_title  + '\n')
+                file.write(menu_title.text  + '\n')
 
-        while itemCounter <= 2:
+        while item_counter <= 2:
            item_xpath2 = '//*[@id="page-78"]/section/div[2]/div/div/div/div[8]/div/div[{}]/div/div/p[1]'
-           item_xpath2 = item_xpath2.format(itemCounter + 1)
+           item_xpath2 = item_xpath2.format(item_counter + 1)
 
-           item2 = browser.find_element(By.XPATH, item_xpath2) 
-           items2.append(item2)
-           itemCounter += 1
-           print(item2.text)
+           item_2 = browser.find_element(By.XPATH, item_xpath2) 
+           items_2.append(item_2)
+           item_counter += 1
+           print(item_2.text)
            with open('restaurant_scraping.csv', 'a') as file:
-                file.write(item2.text + '\n')
+                file.write(item_2.text + '\n')
 
 
 input("Press enter to close the browser...")
