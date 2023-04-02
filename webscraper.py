@@ -31,6 +31,10 @@ browser = webdriver.Chrome()
 
 for url in urls:
     browser.get(url)
+    response = requests.get(url)
+    html_content = response.text
+    soup = BeautifulSoup(html_content, 'lxml')
+    print(soup.prettify())
     time.sleep(1)
 
     if url == urls[0]:
