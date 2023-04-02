@@ -99,4 +99,4 @@ for url in urls:
                 file.write(item_2.text + '\n')
 
 
-input("Press enter to close the browser...")
+browser.quit()
